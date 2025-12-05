@@ -1,3 +1,4 @@
+import { Sparkles } from "lucide-react";
 import type { FollowUpQuestion } from "@/types/chat";
 
 interface FollowUpChipsProps {
@@ -7,14 +8,15 @@ interface FollowUpChipsProps {
 
 export function FollowUpChips({ questions, onSelect }: FollowUpChipsProps) {
   return (
-    <div className="flex flex-wrap gap-2 mt-4">
+    <div className="follow-up-container">
       {questions.map((question) => (
         <button
           key={question.id}
           onClick={() => onSelect(question)}
           className="clinical-chip text-left"
         >
-          {question.text}
+          <Sparkles className="clinical-chip-icon shrink-0" />
+          <span>{question.text}</span>
         </button>
       ))}
     </div>

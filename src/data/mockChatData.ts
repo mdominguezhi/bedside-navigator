@@ -25,11 +25,15 @@ export const initialMessages: ChatMessage[] = [
     followUpQuestions: [
       {
         id: "q1",
-        text: "¿Qué otras camas tienen equipamiento de ventilador disponible?",
+        text: "Mostrar camas con aislamiento disponible",
       },
       {
         id: "q2",
-        text: "¿Hay camas libres en otros servicios relacionados con Neurología?",
+        text: "¿Cuánto tiempo lleva libre esta cama?",
+      },
+      {
+        id: "q3",
+        text: "Buscar alternativas en planta baja",
       },
     ],
   },
@@ -74,12 +78,16 @@ export const initialMessages: ChatMessage[] = [
     mapLink: "#mapa-camas",
     followUpQuestions: [
       {
-        id: "q3",
-        text: "¿Necesita ayuda para reservar alguna de estas camas?",
+        id: "q4",
+        text: "Comparar equipamiento de estas camas",
       },
       {
-        id: "q4",
-        text: "¿Qué equipamiento tiene cada una de estas camas?",
+        id: "q5",
+        text: "Filtrar por camas cerca de enfermería",
+      },
+      {
+        id: "q6",
+        text: "Ver historial de ocupación de la cama 6113",
       },
     ],
   },

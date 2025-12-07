@@ -8,7 +8,7 @@ interface ReferenceLinksProps {
 }
 
 export function ReferenceLinks({ references }: ReferenceLinksProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(references.length <= 2);
 
   return (
     <div className="mt-3">

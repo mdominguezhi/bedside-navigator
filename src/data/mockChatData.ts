@@ -21,7 +21,10 @@ export const initialMessages: ChatMessage[] = [
       { type: "reserve", bedId: "N503", label: "Reservar cama N503" },
       { type: "cancel", bedId: "N503", label: "Cancelar N503" },
     ],
-    mapLink: "#mapa-camas",
+    references: [
+      { id: "ref1", label: "Ver mapa de camas", href: "#mapa-camas" },
+      { id: "ref2", label: "Protocolo de admisión Neurología", href: "#protocolo" },
+    ],
     followUpQuestions: [
       {
         id: "q1",
@@ -75,7 +78,11 @@ export const initialMessages: ChatMessage[] = [
       { type: "cancel", bedId: "6113", label: "Cancelar 6113" },
       { type: "cancel", bedId: "6117", label: "Cancelar 6117" },
     ],
-    mapLink: "#mapa-camas",
+    references: [
+      { id: "ref3", label: "Ver mapa de camas con filtros", href: "#mapa-camas" },
+      { id: "ref4", label: "Comparar servicios", href: "#comparar" },
+      { id: "ref5", label: "Guía de asignación", href: "#guia" },
+    ],
     followUpQuestions: [
       {
         id: "q4",

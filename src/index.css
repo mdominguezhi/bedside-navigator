@@ -221,98 +221,39 @@
     @apply bg-destructive/10 text-destructive;
   }
 
-  /* Modern Outline Buttons with Fill Animation */
+  /* Clean Subtle Buttons */
   .clinical-btn-primary {
-    @apply relative overflow-hidden font-semibold;
-    border: 2px solid hsl(var(--primary));
-    color: hsl(var(--primary));
-    background: transparent;
-    z-index: 1;
-  }
-
-  .clinical-btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+    @apply font-medium text-sm;
     background: hsl(var(--primary));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: -1;
+    color: hsl(var(--primary-foreground));
+    transition: opacity 0.15s ease;
   }
 
   .clinical-btn-primary:hover {
-    color: hsl(var(--primary-foreground));
-  }
-
-  .clinical-btn-primary:hover::before {
-    transform: scaleX(1);
-  }
-
-  .clinical-btn-primary:active {
-    transform: scale(0.98);
+    opacity: 0.85;
   }
 
   .clinical-btn-outline {
-    @apply relative overflow-hidden font-medium;
-    border: 2px solid hsl(var(--muted-foreground) / 0.3);
-    color: hsl(var(--muted-foreground));
+    @apply font-medium text-sm;
     background: transparent;
-    z-index: 1;
-  }
-
-  .clinical-btn-outline::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: hsl(var(--destructive) / 0.1);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: -1;
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--muted-foreground));
+    transition: background 0.15s ease, border-color 0.15s ease;
   }
 
   .clinical-btn-outline:hover {
-    border-color: hsl(var(--destructive) / 0.5);
-    color: hsl(var(--destructive));
-  }
-
-  .clinical-btn-outline:hover::before {
-    transform: scaleX(1);
-  }
-
-  .clinical-btn-outline:active {
-    transform: scale(0.98);
+    background: hsl(var(--muted) / 0.5);
+    border-color: hsl(var(--muted-foreground) / 0.3);
   }
 
   .clinical-btn-success {
-    @apply relative overflow-hidden font-semibold;
-    border: 2px solid hsl(var(--success));
-    color: hsl(var(--success));
-    background: transparent;
-    z-index: 1;
-  }
-
-  .clinical-btn-success::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+    @apply font-medium text-sm;
     background: hsl(var(--success));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: -1;
+    color: hsl(var(--success-foreground));
+    transition: opacity 0.15s ease;
   }
 
   .clinical-btn-success:hover {
-    color: hsl(var(--success-foreground));
-  }
-
-  .clinical-btn-success:hover::before {
-    transform: scaleX(1);
-  }
-
-  .clinical-btn-success:active {
-    transform: scale(0.98);
+    opacity: 0.85;
   }
 }

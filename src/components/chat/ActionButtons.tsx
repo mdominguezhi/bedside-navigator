@@ -21,41 +21,33 @@ export function ActionButtons({ actions, onAction }: ActionButtonsProps) {
   const cancelActions = actions.filter((a) => a.type === "cancel");
 
   return (
-    <div className="space-y-2 mt-4">
-      {reserveActions.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {reserveActions.map((action) => (
-            <Button
-              key={`${action.type}-${action.bedId}`}
-              variant="clinical"
-              size="sm"
-              loading={loadingId === `${action.type}-${action.bedId}`}
-              onClick={() => handleClick(action)}
-              className="flex-1 min-w-[140px] max-w-[200px]"
-            >
-              <Check className="w-4 h-4" />
-              {action.label}
-            </Button>
-          ))}
-        </div>
-      )}
-      {cancelActions.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {cancelActions.map((action) => (
-            <Button
-              key={`${action.type}-${action.bedId}`}
-              variant="clinicalOutline"
-              size="sm"
-              loading={loadingId === `${action.type}-${action.bedId}`}
-              onClick={() => handleClick(action)}
-              className="flex-1 min-w-[140px] max-w-[200px]"
-            >
-              <X className="w-4 h-4" />
-              {action.label}
-            </Button>
-          ))}
-        </div>
-      )}
+    <div className="flex flex-wrap gap-2 mt-3">
+      {reserveActions.map((action) => (
+        <Button
+          key={`${action.type}-${action.bedId}`}
+          variant="clinical"
+          size="sm"
+          loading={loadingId === `${action.type}-${action.bedId}`}
+          onClick={() => handleClick(action)}
+          className="h-7 px-3 text-xs"
+        >
+          <Check className="w-3 h-3" />
+          {action.label}
+        </Button>
+      ))}
+      {cancelActions.map((action) => (
+        <Button
+          key={`${action.type}-${action.bedId}`}
+          variant="clinicalOutline"
+          size="sm"
+          loading={loadingId === `${action.type}-${action.bedId}`}
+          onClick={() => handleClick(action)}
+          className="h-7 px-3 text-xs"
+        >
+          <X className="w-3 h-3" />
+          {action.label}
+        </Button>
+      ))}
     </div>
   );
 }

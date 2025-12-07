@@ -6,6 +6,7 @@ import { BedListCard } from "./BedListCard";
 import { ActionButtons } from "./ActionButtons";
 import { FollowUpChips } from "./FollowUpChips";
 import { MapLink } from "./MapLink";
+import { ReferenceLinks } from "./ReferenceLinks";
 
 interface AssistantMessageProps {
   message: ChatMessage;
@@ -54,6 +55,11 @@ export function AssistantMessage({ message, onAction, onFollowUp }: AssistantMes
 
         {/* Map Link */}
         {message.mapLink && <MapLink href={message.mapLink} />}
+
+        {/* Reference Links */}
+        {message.references && message.references.length > 0 && (
+          <ReferenceLinks references={message.references} />
+        )}
 
         {/* Follow-up Questions */}
         {message.followUpQuestions && message.followUpQuestions.length > 0 && (

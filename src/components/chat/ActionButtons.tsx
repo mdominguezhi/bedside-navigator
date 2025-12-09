@@ -49,7 +49,7 @@ export function ActionButtons({ actions, onAction }: ActionButtonsProps) {
               loading={isLoading}
               onClick={() => !isConfirmed && handleClick(action)}
               disabled={isConfirmed}
-              className="h-7 px-3 text-xs"
+              className="h-7 px-3 text-xs transition-all duration-300 ease-out"
             >
               {isConfirmed ? (
                 <CheckCheck className="w-3 h-3" />
@@ -85,7 +85,7 @@ export function ActionButtons({ actions, onAction }: ActionButtonsProps) {
               loading={isLoading}
               onClick={() => !isConfirmed && handleClick(action)}
               disabled={isConfirmed}
-              className="h-7 px-3 text-xs"
+              className="h-7 px-3 text-xs transition-all duration-300 ease-out"
             >
               {isConfirmed ? (
                 <CheckCheck className="w-3 h-3" />

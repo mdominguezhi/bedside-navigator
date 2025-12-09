@@ -63,7 +63,7 @@ export function ActionButtons({ actions, onAction }: ActionButtonsProps) {
                 variant="ghost"
                 size="sm"
                 onClick={() => handleUndo(action)}
-                className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground"
+                className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground animate-fade-in"
                 title="Deshacer"
               >
                 <Undo2 className="w-3 h-3" />
@@ -99,7 +99,7 @@ export function ActionButtons({ actions, onAction }: ActionButtonsProps) {
                 variant="ghost"
                 size="sm"
                 onClick={() => handleUndo(action)}
-                className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground"
+                className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground animate-fade-in"
                 title="Deshacer"
               >
                 <Undo2 className="w-3 h-3" />

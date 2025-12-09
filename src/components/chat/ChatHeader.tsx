@@ -1,6 +1,7 @@
 import { X, Bot } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { PanelStatus } from "@/types/chat";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface ChatHeaderProps {
   status: PanelStatus;
@@ -44,15 +45,18 @@ export function ChatHeader({ status, onClose }: ChatHeaderProps) {
             </div>
           </div>
         </div>
-        {onClose && (
-          <button
-            onClick={onClose}
-            className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-            aria-label="Cerrar panel"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        )}
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              aria-label="Cerrar panel"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
+        </div>
       </div>
     </header>
   );

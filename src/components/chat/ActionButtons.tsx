@@ -1,7 +1,8 @@
-import { Check, CheckCheck, X, Undo2 } from "lucide-react";
+import { Check, CheckCheck, X, Undo2, Bed } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { MessageAction } from "@/types/chat";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface ActionButtonsProps {
   actions: MessageAction[];
@@ -43,21 +44,31 @@ export function ActionButtons({ actions, onAction }: ActionButtonsProps) {
 
         return (
           <div key={actionId} className="flex items-center gap-1">
-            <Button
-              variant={isConfirmed ? "clinical" : "clinicalOutline"}
-              size="sm"
-              loading={isLoading}
-              onClick={() => !isConfirmed && handleClick(action)}
-              disabled={isConfirmed}
-              className={`h-7 px-3 text-xs transition-all duration-300 ease-out ${isConfirmed ? "scale-105" : "scale-100"}`}
-            >
-              {isConfirmed ? (
-                <CheckCheck className="w-3 h-3" />
-              ) : (
-                <Check className="w-3 h-3" />
+            <button
+              onClick={() => !isConfirmed && !isLoading && handleClick(action)}
+              disabled={isConfirmed || isLoading}
+              className={cn(
+                "action-card-btn group",
+                isConfirmed && "action-card-btn-confirmed",
+                !isConfirmed && !isLoading && "animate-pulse-subtle"
               )}
-              {action.label}
-            </Button>
+            >
+              <div className="action-card-icon">
+                {isLoading ? (
+                  <div className="w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+                ) : isConfirmed ? (
+                  <CheckCheck className="w-4 h-4 text-success" />
+                ) : (
+                  <Bed className="w-4 h-4 text-primary" />
+                )}
+              </div>
+              <div className="flex flex-col items-start">
+                <span className="action-card-label">{action.label}</span>
+                <span className="action-card-sublabel">
+                  {isConfirmed ? "Confirmado" : "Click para reservar"}
+                </span>
+              </div>
+            </button>
             {isConfirmed && (
               <Button
                 variant="ghost"
@@ -79,21 +90,30 @@ export function ActionButtons({ actions, onAction }: ActionButtonsProps) {
 
         return (
           <div key={actionId} className="flex items-center gap-1">
-            <Button
-              variant={isConfirmed ? "destructive" : "clinicalOutline"}
-              size="sm"
-              loading={isLoading}
-              onClick={() => !isConfirmed && handleClick(action)}
-              disabled={isConfirmed}
-              className={`h-7 px-3 text-xs transition-all duration-300 ease-out ${isConfirmed ? "scale-105" : "scale-100"}`}
-            >
-              {isConfirmed ? (
-                <CheckCheck className="w-3 h-3" />
-              ) : (
-                <X className="w-3 h-3" />
+            <button
+              onClick={() => !isConfirmed && !isLoading && handleClick(action)}
+              disabled={isConfirmed || isLoading}
+              className={cn(
+                "action-card-btn action-card-btn-cancel group",
+                isConfirmed && "action-card-btn-cancel-confirmed"
               )}
-              {action.label}
-            </Button>
+            >
+              <div className="action-card-icon action-card-icon-cancel">
+                {isLoading ? (
+                  <div className="w-4 h-4 border-2 border-destructive/30 border-t-destructive rounded-full animate-spin" />
+                ) : isConfirmed ? (
+                  <CheckCheck className="w-4 h-4 text-destructive" />
+                ) : (
+                  <X className="w-4 h-4 text-destructive" />
+                )}
+              </div>
+              <div className="flex flex-col items-start">
+                <span className="action-card-label">{action.label}</span>
+                <span className="action-card-sublabel">
+                  {isConfirmed ? "Cancelado" : "Click para cancelar"}
+                </span>
+              </div>
+            </button>
             {isConfirmed && (
               <Button
                 variant="ghost"

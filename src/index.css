@@ -373,4 +373,131 @@
       0 1px 0 0 hsl(0 0% 0% / 0.1) inset,
       0 2px 4px hsl(var(--success) / 0.2);
   }
+
+  /* Action Card Buttons - Mini card style */
+  .action-card-btn {
+    @apply flex items-center gap-3 px-3 py-2 rounded-xl cursor-pointer;
+    @apply transition-all duration-200 ease-out;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: 
+      0 2px 8px hsl(0 0% 0% / 0.04),
+      0 4px 12px hsl(var(--primary) / 0.06);
+  }
+
+  .action-card-btn:hover:not(:disabled) {
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: 
+      0 4px 12px hsl(0 0% 0% / 0.08),
+      0 6px 20px hsl(var(--primary) / 0.12);
+    transform: translateY(-2px);
+  }
+
+  .action-card-btn:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  .action-card-btn:disabled {
+    @apply cursor-default;
+  }
+
+  .action-card-btn-confirmed {
+    background: hsl(var(--success) / 0.08);
+    border-color: hsl(var(--success) / 0.3);
+  }
+
+  .action-card-icon {
+    @apply flex items-center justify-center w-9 h-9 rounded-lg;
+    background: hsl(var(--primary) / 0.1);
+  }
+
+  .action-card-label {
+    @apply text-sm font-medium;
+    color: hsl(var(--foreground));
+  }
+
+  .action-card-sublabel {
+    @apply text-xs;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Cancel variant */
+  .action-card-btn-cancel {
+    box-shadow: 
+      0 2px 8px hsl(0 0% 0% / 0.04),
+      0 4px 12px hsl(var(--destructive) / 0.04);
+  }
+
+  .action-card-btn-cancel:hover:not(:disabled) {
+    border-color: hsl(var(--destructive) / 0.4);
+    box-shadow: 
+      0 4px 12px hsl(0 0% 0% / 0.08),
+      0 6px 20px hsl(var(--destructive) / 0.1);
+  }
+
+  .action-card-btn-cancel-confirmed {
+    background: hsl(var(--destructive) / 0.08);
+    border-color: hsl(var(--destructive) / 0.3);
+  }
+
+  .action-card-icon-cancel {
+    background: hsl(var(--destructive) / 0.1);
+  }
+
+  /* Subtle pulse animation */
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% {
+      box-shadow: 
+        0 2px 8px hsl(0 0% 0% / 0.04),
+        0 4px 12px hsl(var(--primary) / 0.06);
+    }
+    50% {
+      box-shadow: 
+        0 2px 8px hsl(0 0% 0% / 0.06),
+        0 4px 16px hsl(var(--primary) / 0.15);
+    }
+  }
+
+  /* Dark mode enhancements */
+  .dark .action-card-btn {
+    background: hsl(var(--card));
+    box-shadow: 
+      0 2px 8px hsl(0 0% 0% / 0.2),
+      0 0 16px hsl(var(--primary) / 0.08);
+  }
+
+  .dark .action-card-btn:hover:not(:disabled) {
+    box-shadow: 
+      0 4px 16px hsl(0 0% 0% / 0.3),
+      0 0 24px hsl(var(--primary) / 0.2);
+  }
+
+  .dark .action-card-icon {
+    background: hsl(var(--primary) / 0.15);
+  }
+
+  .dark .action-card-icon-cancel {
+    background: hsl(var(--destructive) / 0.15);
+  }
+
+  .dark .animate-pulse-subtle {
+    animation: pulse-subtle-dark 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-subtle-dark {
+    0%, 100% {
+      box-shadow: 
+        0 2px 8px hsl(0 0% 0% / 0.2),
+        0 0 16px hsl(var(--primary) / 0.08);
+    }
+    50% {
+      box-shadow: 
+        0 2px 8px hsl(0 0% 0% / 0.25),
+        0 0 24px hsl(var(--primary) / 0.2);
+    }
+  }
 }

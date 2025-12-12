@@ -374,23 +374,23 @@
       0 2px 4px hsl(var(--success) / 0.2);
   }
 
-  /* Action Card Buttons - Mini card style */
+  /* Action Card Buttons - Compact mini card style */
   .action-card-btn {
-    @apply flex items-center gap-3 px-3 py-2 rounded-xl cursor-pointer;
+    @apply flex items-center gap-2 px-2.5 py-1.5 rounded-lg cursor-pointer;
     @apply transition-all duration-200 ease-out;
     background: hsl(var(--card));
     border: 1px solid hsl(var(--border));
     box-shadow: 
-      0 2px 8px hsl(0 0% 0% / 0.04),
-      0 4px 12px hsl(var(--primary) / 0.06);
+      0 1px 4px hsl(0 0% 0% / 0.03),
+      0 2px 6px hsl(var(--primary) / 0.04);
   }
 
   .action-card-btn:hover:not(:disabled) {
     border-color: hsl(var(--primary) / 0.4);
     box-shadow: 
-      0 4px 12px hsl(0 0% 0% / 0.08),
-      0 6px 20px hsl(var(--primary) / 0.12);
-    transform: translateY(-2px);
+      0 2px 8px hsl(0 0% 0% / 0.06),
+      0 4px 12px hsl(var(--primary) / 0.1);
+    transform: translateY(-1px);
   }
 
   .action-card-btn:active:not(:disabled) {
@@ -407,17 +407,21 @@
   }
 
   .action-card-icon {
-    @apply flex items-center justify-center w-9 h-9 rounded-lg;
+    @apply flex items-center justify-center w-6 h-6 rounded-md;
     background: hsl(var(--primary) / 0.1);
   }
 
+  .action-card-icon svg {
+    @apply w-3.5 h-3.5;
+  }
+
   .action-card-label {
-    @apply text-sm font-medium;
+    @apply text-xs font-medium leading-tight;
     color: hsl(var(--foreground));
   }
 
   .action-card-sublabel {
-    @apply text-xs;
+    @apply text-[10px] leading-tight;
     color: hsl(var(--muted-foreground));
   }
 

@@ -62,12 +62,7 @@ export function ActionButtons({ actions, onAction }: ActionButtonsProps) {
                   <Bed className="w-4 h-4 text-primary" />
                 )}
               </div>
-              <div className="flex flex-col items-start">
-                <span className="action-card-label">{action.label}</span>
-                <span className="action-card-sublabel">
-                  {isConfirmed ? "Confirmado" : "Click para reservar"}
-                </span>
-              </div>
+              <span className="action-card-label">{action.label}</span>
             </button>
             {isConfirmed && (
               <Button
@@ -107,12 +102,7 @@ export function ActionButtons({ actions, onAction }: ActionButtonsProps) {
                   <X className="w-4 h-4 text-destructive" />
                 )}
               </div>
-              <div className="flex flex-col items-start">
-                <span className="action-card-label">{action.label}</span>
-                <span className="action-card-sublabel">
-                  {isConfirmed ? "Cancelado" : "Click para cancelar"}
-                </span>
-              </div>
+              <span className="action-card-label">{action.label}</span>
             </button>
             {isConfirmed && (
               <Button

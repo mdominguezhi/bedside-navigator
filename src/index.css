@@ -537,4 +537,36 @@
     color: hsl(var(--destructive));
     background: hsl(var(--destructive) / 0.15);
   }
+
+  /* Command Chips */
+  .command-chip {
+    @apply flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg cursor-pointer whitespace-nowrap;
+    @apply text-xs font-medium transition-all duration-150;
+    color: hsl(var(--muted-foreground));
+    background: hsl(var(--muted) / 0.4);
+    border: 1px solid transparent;
+  }
+
+  .command-chip:hover {
+    color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.08);
+    border-color: hsl(var(--primary) / 0.2);
+  }
+
+  .dark .command-chip {
+    background: hsl(var(--muted) / 0.3);
+  }
+
+  .dark .command-chip:hover {
+    background: hsl(var(--primary) / 0.15);
+  }
+
+  /* Scrollbar Hide Utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }

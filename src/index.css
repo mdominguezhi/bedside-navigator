@@ -504,4 +504,37 @@
         0 0 24px hsl(var(--primary) / 0.2);
     }
   }
+
+  /* Quick Action Buttons */
+  .quick-action-btn {
+    @apply flex items-center justify-center w-7 h-7 rounded-md cursor-pointer;
+    @apply transition-all duration-150 ease-out;
+    color: hsl(var(--muted-foreground));
+    background: transparent;
+  }
+
+  .quick-action-btn:hover {
+    color: hsl(var(--foreground));
+    background: hsl(var(--muted) / 0.5);
+  }
+
+  .quick-action-btn-active {
+    color: hsl(var(--success));
+    background: hsl(var(--success) / 0.1);
+  }
+
+  .quick-action-btn-active:hover {
+    color: hsl(var(--success));
+    background: hsl(var(--success) / 0.15);
+  }
+
+  .quick-action-btn-active-negative {
+    color: hsl(var(--destructive));
+    background: hsl(var(--destructive) / 0.1);
+  }
+
+  .quick-action-btn-active-negative:hover {
+    color: hsl(var(--destructive));
+    background: hsl(var(--destructive) / 0.15);
+  }
 }

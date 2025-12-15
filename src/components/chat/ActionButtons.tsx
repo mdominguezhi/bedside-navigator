@@ -38,16 +38,30 @@ export function ActionButtons({ actions, onAction }: ActionButtonsProps) {
   const hasReserveActions = reserveActions.length > 0;
   const hasCancelActions = cancelActions.length > 0;
 
+  const pendingReserveCount = reserveActions.filter(
+    (a) => !confirmedIds.has(getActionId(a))
+  ).length;
+  const pendingCancelCount = cancelActions.filter(
+    (a) => !confirmedIds.has(getActionId(a))
+  ).length;
+
   if (!hasReserveActions && !hasCancelActions) return null;
 
   return (
     <div className="action-buttons-container mt-4">
       {hasReserveActions && (
         <div className="action-group">
-          <span className="action-group-label">
-            <Bed className="w-3 h-3" />
-            Reservar
-          </span>
+          <div className="action-group-header">
+            <span className="action-group-label">
+              <Bed className="w-3 h-3" />
+              Reservar
+            </span>
+            {pendingReserveCount > 0 ? (
+              <span className="action-counter">{pendingReserveCount} pendiente{pendingReserveCount > 1 ? 's' : ''}</span>
+            ) : (
+              <span className="action-counter action-counter-complete">Completado</span>
+            )}
+          </div>
           <div className="action-group-items">
             {reserveActions.map((action) => {
               const actionId = getActionId(action);
@@ -100,10 +114,17 @@ export function ActionButtons({ actions, onAction }: ActionButtonsProps) {
 
       {hasCancelActions && (
         <div className="action-group">
-          <span className="action-group-label action-group-label-cancel">
-            <X className="w-3 h-3" />
-            Cancelar
-          </span>
+          <div className="action-group-header">
+            <span className="action-group-label action-group-label-cancel">
+              <X className="w-3 h-3" />
+              Cancelar
+            </span>
+            {pendingCancelCount > 0 ? (
+              <span className="action-counter action-counter-cancel">{pendingCancelCount} pendiente{pendingCancelCount > 1 ? 's' : ''}</span>
+            ) : (
+              <span className="action-counter action-counter-complete">Completado</span>
+            )}
+          </div>
           <div className="action-group-items">
             {cancelActions.map((action) => {
               const actionId = getActionId(action);

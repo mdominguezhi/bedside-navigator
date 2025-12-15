@@ -639,4 +639,38 @@
       0 -2px 8px hsl(0 0% 0% / 0.2),
       0 0 0 1px hsl(var(--primary) / 0.1);
   }
+
+  /* Action buttons container */
+  .action-buttons-container {
+    @apply flex flex-col gap-3 p-3 rounded-lg;
+    background: hsl(var(--muted) / 0.3);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  .action-group {
+    @apply flex flex-col gap-2;
+  }
+
+  .action-group-label {
+    @apply flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .action-group-label-cancel {
+    color: hsl(var(--destructive) / 0.8);
+  }
+
+  .action-group-items {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .action-divider {
+    @apply w-full h-px;
+    background: hsl(var(--border) / 0.6);
+  }
+
+  .dark .action-buttons-container {
+    background: hsl(var(--muted) / 0.15);
+    border-color: hsl(var(--border) / 0.3);
+  }
 }

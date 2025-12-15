@@ -35,89 +35,119 @@ export function ActionButtons({ actions, onAction }: ActionButtonsProps) {
   const reserveActions = actions.filter((a) => a.type === "reserve");
   const cancelActions = actions.filter((a) => a.type === "cancel");
 
+  const hasReserveActions = reserveActions.length > 0;
+  const hasCancelActions = cancelActions.length > 0;
+
+  if (!hasReserveActions && !hasCancelActions) return null;
+
   return (
-    <div className="flex flex-wrap gap-2 mt-3">
-      {reserveActions.map((action) => {
-        const actionId = getActionId(action);
-        const isConfirmed = confirmedIds.has(actionId);
-        const isLoading = loadingId === actionId;
+    <div className="action-buttons-container mt-4">
+      {hasReserveActions && (
+        <div className="action-group">
+          <span className="action-group-label">
+            <Bed className="w-3 h-3" />
+            Reservar
+          </span>
+          <div className="action-group-items">
+            {reserveActions.map((action) => {
+              const actionId = getActionId(action);
+              const isConfirmed = confirmedIds.has(actionId);
+              const isLoading = loadingId === actionId;
 
-        return (
-          <div key={actionId} className="flex items-center gap-1">
-            <button
-              onClick={() => !isConfirmed && !isLoading && handleClick(action)}
-              disabled={isConfirmed || isLoading}
-              className={cn(
-                "action-card-btn group",
-                isConfirmed && "action-card-btn-confirmed",
-                !isConfirmed && !isLoading && "animate-pulse-subtle"
-              )}
-            >
-              <div className="action-card-icon">
-                {isLoading ? (
-                  <div className="w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
-                ) : isConfirmed ? (
-                  <CheckCheck className="w-4 h-4 text-success" />
-                ) : (
-                  <Bed className="w-4 h-4 text-primary" />
-                )}
-              </div>
-              <span className="action-card-label">{action.label}</span>
-            </button>
-            {isConfirmed && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => handleUndo(action)}
-                className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground animate-fade-in"
-                title="Deshacer"
-              >
-                <Undo2 className="w-3 h-3" />
-              </Button>
-            )}
+              return (
+                <div key={actionId} className="flex items-center gap-1">
+                  <button
+                    onClick={() => !isConfirmed && !isLoading && handleClick(action)}
+                    disabled={isConfirmed || isLoading}
+                    className={cn(
+                      "action-card-btn group",
+                      isConfirmed && "action-card-btn-confirmed",
+                      !isConfirmed && !isLoading && "animate-pulse-subtle"
+                    )}
+                  >
+                    <div className="action-card-icon">
+                      {isLoading ? (
+                        <div className="w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+                      ) : isConfirmed ? (
+                        <CheckCheck className="w-4 h-4 text-success" />
+                      ) : (
+                        <Bed className="w-4 h-4 text-primary" />
+                      )}
+                    </div>
+                    <span className="action-card-label">{action.label}</span>
+                  </button>
+                  {isConfirmed && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleUndo(action)}
+                      className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground animate-fade-in"
+                      title="Deshacer"
+                    >
+                      <Undo2 className="w-3 h-3" />
+                    </Button>
+                  )}
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
-      {cancelActions.map((action) => {
-        const actionId = getActionId(action);
-        const isConfirmed = confirmedIds.has(actionId);
-        const isLoading = loadingId === actionId;
+        </div>
+      )}
 
-        return (
-          <div key={actionId} className="flex items-center gap-1">
-            <button
-              onClick={() => !isConfirmed && !isLoading && handleClick(action)}
-              disabled={isConfirmed || isLoading}
-              className={cn(
-                "action-card-btn action-card-btn-cancel group",
-                isConfirmed && "action-card-btn-cancel-confirmed"
-              )}
-            >
-              <div className="action-card-icon action-card-icon-cancel">
-                {isLoading ? (
-                  <div className="w-4 h-4 border-2 border-destructive/30 border-t-destructive rounded-full animate-spin" />
-                ) : isConfirmed ? (
-                  <CheckCheck className="w-4 h-4 text-destructive" />
-                ) : (
-                  <X className="w-4 h-4 text-destructive" />
-                )}
-              </div>
-              <span className="action-card-label">{action.label}</span>
-            </button>
-            {isConfirmed && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => handleUndo(action)}
-                className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground animate-fade-in"
-                title="Deshacer"
-              >
-                <Undo2 className="w-3 h-3" />
-              </Button>
-            )}
+      {hasReserveActions && hasCancelActions && (
+        <div className="action-divider" />
+      )}
+
+      {hasCancelActions && (
+        <div className="action-group">
+          <span className="action-group-label action-group-label-cancel">
+            <X className="w-3 h-3" />
+            Cancelar
+          </span>
+          <div className="action-group-items">
+            {cancelActions.map((action) => {
+              const actionId = getActionId(action);
+              const isConfirmed = confirmedIds.has(actionId);
+              const isLoading = loadingId === actionId;
+
+              return (
+                <div key={actionId} className="flex items-center gap-1">
+                  <button
+                    onClick={() => !isConfirmed && !isLoading && handleClick(action)}
+                    disabled={isConfirmed || isLoading}
+                    className={cn(
+                      "action-card-btn action-card-btn-cancel group",
+                      isConfirmed && "action-card-btn-cancel-confirmed"
+                    )}
+                  >
+                    <div className="action-card-icon action-card-icon-cancel">
+                      {isLoading ? (
+                        <div className="w-4 h-4 border-2 border-destructive/30 border-t-destructive rounded-full animate-spin" />
+                      ) : isConfirmed ? (
+                        <CheckCheck className="w-4 h-4 text-destructive" />
+                      ) : (
+                        <X className="w-4 h-4 text-destructive" />
+                      )}
+                    </div>
+                    <span className="action-card-label">{action.label}</span>
+                  </button>
+                  {isConfirmed && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleUndo(action)}
+                      className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground animate-fade-in"
+                      title="Deshacer"
+                    >
+                      <Undo2 className="w-3 h-3" />
+                    </Button>
+                  )}
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
+        </div>
+      )}
     </div>
   );
 }

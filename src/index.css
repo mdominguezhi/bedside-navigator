@@ -651,9 +651,29 @@
     @apply flex flex-col gap-2;
   }
 
+  .action-group-header {
+    @apply flex items-center justify-between gap-2;
+  }
+
   .action-group-label {
     @apply flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide;
     color: hsl(var(--muted-foreground));
+  }
+
+  .action-counter {
+    @apply text-xs font-medium px-2 py-0.5 rounded-full;
+    background: hsl(var(--primary) / 0.1);
+    color: hsl(var(--primary));
+  }
+
+  .action-counter-cancel {
+    background: hsl(var(--destructive) / 0.1);
+    color: hsl(var(--destructive));
+  }
+
+  .action-counter-complete {
+    background: hsl(var(--success) / 0.1);
+    color: hsl(var(--success));
   }
 
   .action-group-label-cancel {

@@ -45,6 +45,10 @@ export const initialMessages: ChatMessage[] = [
     type: "user",
     content: "¿Hay camas libres en otros servicios relacionados con Neurología?",
     timestamp: new Date(Date.now() - 8 * 60 * 1000),
+    context: {
+      label: "Contexto",
+      value: "60 tarjetas seleccionadas",
+    },
   },
   {
     id: "3",

@@ -693,4 +693,17 @@
     background: hsl(var(--muted) / 0.15);
     border-color: hsl(var(--border) / 0.3);
   }
+
+  /* User message context */
+  .user-message-context {
+    @apply flex items-center gap-1.5 text-xs px-3 py-1 rounded-full mr-10;
+    background: hsl(var(--muted) / 0.6);
+    color: hsl(var(--muted-foreground));
+    max-width: 85%;
+  }
+
+  .dark .user-message-context {
+    background: hsl(var(--muted) / 0.4);
+    color: hsl(var(--muted-foreground));
+  }
 }

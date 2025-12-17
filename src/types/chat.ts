@@ -26,6 +26,11 @@ export interface ReferenceLink {
   href: string;
 }
 
+export interface MessageContext {
+  label: string;
+  value: string | number;
+}
+
 export interface ChatMessage {
   id: string;
   type: 'assistant' | 'user';
@@ -38,6 +43,7 @@ export interface ChatMessage {
   followUpQuestions?: FollowUpQuestion[];
   mapLink?: string;
   references?: ReferenceLink[];
+  context?: MessageContext;
 }
 
 export type PanelStatus = 'complete' | 'thinking' | 'error';
